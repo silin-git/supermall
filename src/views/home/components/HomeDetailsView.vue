@@ -30,14 +30,14 @@ export default {
   }
   .recommend .recommendItem{
     flex: 1;
+    text-align: center;
   }
   .recommend .recommendItem a{
     text-decoration: none;
     color: black;
-    text-align: center;
   }
   .recommend .recommendItem img{
-    max-width: 100%;
-    max-height: 100%;
+    max-width: 95%;
+    max-height: 95%;
   }
 </style>

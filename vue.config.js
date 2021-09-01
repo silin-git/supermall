@@ -7,9 +7,15 @@ module.exports = {
         "common": "@/common",
         "compontents": "@/compontents",
         "network": "@/network",
-        "assets": "@/assets",
         "views": "@/views",
       }
+    }
+  },
+  lintOnSave: false,
+  devServer: {
+    overlay: {
+      warnings: true,
+      errors: true
     }
   }
 }
