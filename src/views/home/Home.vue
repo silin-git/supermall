@@ -5,14 +5,19 @@
     </nav-bar>
     <!-- <carousel></carousel> -->
     <detailsView :recommend="recommend"/>
+    <homeRecommend/>
+    <tab-carousel :titles="['流行','新款','精选']"/>
   </div>
 </template>
 
 <script>
 
   import NavBar from '../../components/common/navbar/NavBar.vue'
+  import TabCarousel from '@/components/content/TabCarousel.vue'
+
   import {getAllData} from 'network/home.js'
   import detailsView from './components/HomeDetailsView.vue'
+  import HomeRecommend from './components/HomeRecommend.vue'
 
   export default {
     name: 'Home',
@@ -24,7 +29,9 @@
     },
     components: {
       NavBar,
-      detailsView
+      TabCarousel,
+      detailsView,
+      HomeRecommend,
     },
     created() {
       getAllData().then(res => {

@@ -1,6 +1,6 @@
 <template>
     <div class="recommend">
-      <div class="recommendItem" v-for="item in recommend">
+      <div class="recommendItem" v-for="item in recommend" :key="item.sort">
         <a :href="item.link">
           <img :src="item.image">
           <div>{{item.title}}</div>
@@ -37,7 +37,7 @@ export default {
     color: black;
   }
   .recommend .recommendItem img{
-    max-width: 95%;
-    max-height: 95%;
+    max-width: 80%;
+    max-height: 80%;
   }
 </style>
