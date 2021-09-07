@@ -4,10 +4,10 @@
       <div slot="center">购物车</div>
     </nav-bar>
     <!-- <carousel></carousel> -->
-    <detailsView :recommend="recommend"/>
+    <detailsView :recommend="recommend" class="details-view"/>
     <homeRecommend/>
-    <tab-carousel :titles="['流行','新款','精选']"/>
-    <good-list :goods="goods.pop"/>
+    <tab-carousel :titles="['流行','新款','精选']" @tapItemClick="tapItemClick"/>
+    <good-list :list="showGoods" class="good-list"/>
   </div>
 </template>
 
@@ -40,7 +40,8 @@
             list: [],
             page: 0
           }
-        }
+        },
+        currentTapType: "pop"
       }
     },
     components: {
@@ -50,13 +51,38 @@
       HomeRecommend,
       GoodList
     },
+    computed:{
+      showGoods(){
+        return this.goods[this.currentTapType].list
+      }
+    },
     created() {
       this.getAllData()
-      this.getGoods("pop")
-      this.getGoods("new")
-      this.getGoods("sell")
+      this.getGoods(this.currentTapType)
     },
     methods:{
+      /**
+       * 点击选项卡的方法
+       */
+      tapItemClick(index){
+        switch(index){
+          case 0:
+            this.currentTapType = "pop"
+            break;
+          case 1:
+            this.currentTapType = "new"
+            break;
+          case 2:
+            this.currentTapType = "sell"
+            break;
+          default:break;
+        }
+        this.getGoods(this.currentTapType)
+      },
+
+      /**
+       * 网络请求的方法
+       */
       getAllData(){
         getAllData().then(res => {
         this.banners = res.data.banner.list
@@ -79,5 +105,17 @@
   #home .nav-bar{
     background-color: #55bb8a;
     color: white;
+  }
+  #home {
+    overflow: auto;
+  }
+  #home::-webkit-scrollbar {
+    display: none; /* Chrome Safari */
+  }
+  #home .details-view{
+    margin-top: 44px;
+  }
+  #home .good-list {
+    margin-top: 10px;
   }
 </style>

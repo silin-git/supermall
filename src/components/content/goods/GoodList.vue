@@ -1,6 +1,6 @@
 <template>
-  <div>
-      <good-list-item v-for="(item,index) in goods.list" :key="index" :item="item"/>
+  <div class="good-list">
+      <good-list-item v-for="(item,index) in list" :key="index" :item="item"/>
   </div>
 </template>
 
@@ -9,7 +9,7 @@
 
   export default {
     name: "GoodList",
-    props: ["goods"],
+    props: ["list"],
     components:{
       GoodListItem
     }
@@ -17,5 +17,8 @@
 </script>
 
 <style>
-
+  .good-list{
+    display: flex;
+    flex-flow: row wrap;
+  }
 </style>

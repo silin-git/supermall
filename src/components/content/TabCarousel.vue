@@ -31,6 +31,7 @@ export default {
     itemClick(index){
       this.currentIndex = index;
       this.$refs.tabLine.style.transform="translate3d("+((this.bodyWidth/3-20)/2+(this.bodyWidth/3)*index) +"px,0,0)";
+      this.$emit("tapItemClick",index)
     }
   },
   mounted(){
